@@ -1,14 +1,15 @@
 package native
 
 /*
-#cgo LDFLAGS: ${SRCDIR}/../../libs/libpact_mock_server.dylib
+#cgo LDFLAGS: ${SRCDIR}/../../libs/libpact_mock_server_ffi.dylib
 
 // Library headers
 typedef int bool;
 #define true 1
 #define false 0
 
-int create_mock_server(char* pact, int port);
+void init(char* log);
+int create_mock_server(char* pact, char* addr, bool tls);
 int mock_server_matched(int port);
 char* mock_server_mismatches(int port);
 bool cleanup_mock_server(int port);
@@ -58,10 +59,16 @@ type Mismatch struct {
 	Type    string
 }
 
+// Init initialises the library
+func Init() {
+	log.Println("[DEBUG] initialising framework")
+	C.init(C.CString(""))
+}
+
 // CreateMockServer creates a new Mock Server from a given Pact file.
-func CreateMockServer(pact string, port int) int {
+func CreateMockServer(pact string, address string, tls bool) int {
 	log.Println("[DEBUG] mock server starting")
-	res := C.create_mock_server(C.CString(pact), C.int(port))
+	res := C.create_mock_server(C.CString(pact), C.CString(address), 0)
 	log.Println("[DEBUG] mock server running on port:", res)
 	return int(res)
 }

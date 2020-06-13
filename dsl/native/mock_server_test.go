@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var tmpPactFolder = "../tmp/pacts"
+var tmpPactFolder = "/tmp"
 var pactSimple = `{
   "consumer": {
     "name": "consumer"
@@ -78,7 +78,8 @@ var pactComplex = `{
 }`
 
 func TestMockServer_CreateAndCleanupMockServer(t *testing.T) {
-	port := CreateMockServer(pactComplex, 0)
+	Init()
+	port := CreateMockServer(pactComplex, "0.0.0.0:0", false)
 	defer CleanupMockServer(port)
 
 	if port <= 0 {
@@ -87,7 +88,7 @@ func TestMockServer_CreateAndCleanupMockServer(t *testing.T) {
 }
 
 func TestMockServer_MismatchesSuccess(t *testing.T) {
-	port := CreateMockServer(pactSimple, 0)
+	port := CreateMockServer(pactSimple, "0.0.0.0:0", false)
 	defer CleanupMockServer(port)
 
 	res, err := http.Get(fmt.Sprintf("http://localhost:%d/foobar", port))
@@ -106,7 +107,7 @@ func TestMockServer_MismatchesSuccess(t *testing.T) {
 }
 
 func TestMockServer_MismatchesFail(t *testing.T) {
-	port := CreateMockServer(pactSimple, 0)
+	port := CreateMockServer(pactSimple, "0.0.0.0:0", false)
 	defer CleanupMockServer(port)
 
 	mismatches := MockServerMismatches(port)
@@ -116,7 +117,7 @@ func TestMockServer_MismatchesFail(t *testing.T) {
 }
 
 func TestMockServer_VerifySuccess(t *testing.T) {
-	port := CreateMockServer(pactSimple, 0)
+	port := CreateMockServer(pactSimple, "0.0.0.0:0", false)
 	defer CleanupMockServer(port)
 
 	_, err := http.Get(fmt.Sprintf("http://localhost:%d/foobar", port))
@@ -135,7 +136,7 @@ func TestMockServer_VerifySuccess(t *testing.T) {
 }
 
 func TestMockServer_VerifyFail(t *testing.T) {
-	port := CreateMockServer(pactSimple, 0)
+	port := CreateMockServer(pactSimple, "0.0.0.0:0", false)
 
 	success, mismatches := Verify(port, tmpPactFolder)
 	if success {
@@ -148,7 +149,7 @@ func TestMockServer_VerifyFail(t *testing.T) {
 }
 
 func TestMockServer_WritePactfile(t *testing.T) {
-	port := CreateMockServer(pactSimple, 0)
+	port := CreateMockServer(pactSimple, "0.0.0.0:0", false)
 	defer CleanupMockServer(port)
 
 	_, err := http.Get(fmt.Sprintf("http://localhost:%d/foobar", port))
