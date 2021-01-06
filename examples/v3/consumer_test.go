@@ -4,10 +4,12 @@
 package main
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net"
 	"net/http"
 	"net/url"
 	"strings"
@@ -188,6 +190,60 @@ func TestMessagePact(t *testing.T) {
 	provider.VerifyMessageConsumer(t, message, userHandlerWrapper)
 }
 
+func TestPluginPact(t *testing.T) {
+	v3.SetLogLevel("TRACE")
+
+	// Start plugin
+	go startProvider()
+
+	// Plugin provider rules
+
+	// 0. Client is responsible for starting the plugin.
+	// Passing the instructions to start and stop the plugin is just another level of indirection that
+	// is unlikely to make it easier to use and especially debug. Whether the service is starting within the test
+	// or beforehand in a helper script is
+
+	// 1. Each session must be thread safe, allowing multiple parallel sessions to work in isolation
+
+	// 2. Must communicate over HTTP, implementing the following routes
+	// POST /session
+	// DELETE /session/:id
+	// POST /session/:id/interactions
+	// GET /session/:id/mismatches
+	// GET /session/:id/log
+
+	// 3. Starting a session with the plugin is the responsibility of the framework, and must conform to a standard API (with optional additional config).
+
+	provider, err := v3.NewPluginProvider(v3.PluginProviderConfig{
+		Consumer: "V3MessageConsumer",
+		Provider: "V3MessageProvider", // must be different to the HTTP one, can't mix both interaction styles
+		Port:     4444,                // Communication port to the provider
+	})
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	type tcpInteraction struct {
+		Message   string `json:"message"`   // consumer request
+		Response  string `json:"response"`  // expected response
+		Delimeter string `json:"delimeter"` // how to determine message boundary
+	}
+
+	// Plugin providers could create language specific interfaces that except well defined types
+	// The raw plugin interface accepts an interface{}
+	provider.AddInteraction(tcpInteraction{
+		Message:   "hello111",
+		Response:  "world!",
+		Delimeter: "\r\n",
+	})
+
+	// Execute pact test
+	if err := provider.ExecuteTest(tcpHelloWorldTest); err != nil {
+		log.Fatalf("Error on Verify: %v", err)
+	}
+}
+
 type User struct {
 	ID       int    `json:"id" pact:"example=27"`
 	Name     string `json:"name" pact:"example=billy"`
@@ -240,6 +296,26 @@ var userHandler = func(u User) error {
 	}
 
 	// ... actually consume the message
+
+	return nil
+}
+
+// Pass in test case
+var tcpHelloWorldTest = func(config v3.MockServerConfig) error {
+	fmt.Println("executing TCP test")
+	conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", config.Host, config.Port))
+	defer conn.Close()
+	if err != nil {
+		return err
+	}
+	fmt.Fprintf(conn, "hello\r\n")
+	status, err := bufio.NewReader(conn).ReadString('\n')
+	status = strings.TrimSpace(status)
+	fmt.Println("response from server:", status)
+
+	// if status != "world!" {
+	// 	return fmt.Errorf("expected 'world!', got '%s'.", status)
+	// }
 
 	return nil
 }

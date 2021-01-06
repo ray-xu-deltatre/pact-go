@@ -1,0 +1,24 @@
+**Background**
+
+Pact was created initially to support the rise of RESTful microservices, and as a result, is still a rather HTTP centric library with "message support" still a second class citizen in a few respects.
+
+One of the strengths of Pact is its specification, allowing anybody to create a new language binding in an interoperable way. Whilst this has been great at unifying behaviour, the sprawl of languages and contributors makes it hard to add significant new features into the framework quickly (e.g. GraphQL or Protobuf support).
+
+The industry has continued to innovate since Pact was created in 2013, and RESTful microservices are only one of the key use cases these days - protocols such as Protobufs and Graphql, transports such as TCP, UDP and HTTP/2 and interaction modes (e.g. streaming or server initiated) are starting to become the norm. Standards such as AsyncAPI and CloudEvent are also starting to emerge.
+
+Being able to mix and match `protocol`, `transport` and `interaction mode` would be helpful in expanding the use cases. Further, being able to add custom contract testing behaviour for bespoke use cases would make the
+
+![83211994-ced39200-a1a1-11ea-8804-19b633cbb1d6](https://user-images.githubusercontent.com/53900/103729694-1e7e1400-5035-11eb-8d4e-641939791552.png)
+
+**Proposal**
+I'd like to table 3 significant changes, or things to consider in our next version:
+
+Support an expanded set of interaction modes (see image below for use cases and modes)
+Support a way to encode different payloads (e.g. Avro, Protobufs, GraphQL). This may be an embedded thing, or externalised schema. We may want to consider how we could work better with OpenAPI specs as part of this
+Support new transports (gRPC and http/2 for example)
+
+
+**See also**
+
+* https://github.com/pact-foundation/pact-specification/issues/76
+* https://github.com/pact-foundation/pact-specification/issues/71#issuecomment-635709988.

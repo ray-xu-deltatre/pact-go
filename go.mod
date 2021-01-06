@@ -7,6 +7,7 @@ require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
 	github.com/gin-gonic/gin v0.0.0-20170702092826-d459835d2b07
+	github.com/google/uuid v1.1.4
 	github.com/hashicorp/go-version v1.0.0
 	github.com/hashicorp/logutils v1.0.0
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect

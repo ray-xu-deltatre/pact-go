@@ -216,7 +216,7 @@ func (p *httpMockProvider) ExecuteTest(integrationTest func(MockServerConfig) er
 	}
 
 	// Run Verification Process
-	res, mismatches := native.Verify(p.config.Port, p.config.PactDir)
+	res, mismatches := native.Verify(p.config.Port)
 	p.displayMismatches(mismatches)
 
 	if !res {

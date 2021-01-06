@@ -16,6 +16,11 @@ bool cleanup_mock_server(int port);
 int write_pact_file(int port, char* dir);
 void free_string(char* s);
 char* get_tls_ca_certificate();
+int create_plugin_mock_server(int port, char* config);
+int add_plugin_interaction(int port, char* config);
+char* plugin_mock_server_mismatches(int port);
+int plugin_mock_server_matched(int port);
+bool cleanup_plugin_mock_server(int port);
 
 */
 import "C"

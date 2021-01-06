@@ -14,8 +14,14 @@ int mock_server_matched(int port);
 char* mock_server_mismatches(int port);
 bool cleanup_mock_server(int port);
 int write_pact_file(int port, char* dir);
+int plugin_write_pact_file(int port, char* dir);
 void free_string(char* s);
 char* get_tls_ca_certificate();
+int create_plugin_mock_server(int port, char* config);
+int add_plugin_interaction(int port, char* config);
+char* plugin_mock_server_mismatches(int port);
+int plugin_mock_server_matched(int port);
+bool cleanup_plugin_mock_server(int port);
 
 */
 import "C"
@@ -57,18 +63,30 @@ type Request struct {
 
 // MismatchDetail contains the specific assertions that failed during the verification
 type MismatchDetail struct {
-	Actual   string
-	Expected string
-	Key      string
-	Mismatch string
-	Type     string
+	Actual   string `json:"actual"`
+	Expected string `json:"expected"`
+	Key      string `json:"key"`
+	Mismatch string `json:"mismatch"`
+	Type     string `json:"type"`
 }
 
 // MismatchedRequest contains details of any request mismatches during pact verification
 type MismatchedRequest struct {
 	Request
-	Mismatches []MismatchDetail
-	Type       string
+	Mismatches []MismatchDetail `json:"mismatches"`
+	Type       string           `json:"type"`
+}
+
+// PluginMismatchDetail contains the specific interaction level mismatch
+type PluginInteractionMismatchDetail struct {
+	Actual   string `json:"actual"`
+	Expected string `json:"expected"`
+	Mismatch string `json:"mismatch"`
+}
+
+// PluginMismatchRequest contains details of any request mismatches during pact verification
+type PluginInteractionMismatch struct {
+	Mismatches []PluginInteractionMismatchDetail `json:"mismatches"`
 }
 
 // Init initialises the library
@@ -126,15 +144,89 @@ func CreateMockServer(pact string, address string, tls bool) (int, error) {
 	}
 }
 
+// CreatePluginMockServer starts a mock server from a plugin provider
+func CreatePluginMockServer(port int, cmd string) (int, error) {
+	log.Println("[DEBUG] starting plugin server")
+	cCmd := C.CString(cmd)
+	defer free(cCmd)
+	p := C.create_plugin_mock_server(C.int(port), cCmd)
+
+	return int(p), nil
+}
+
+// AddPluginInteractions starts a mock server from a plugin provider
+func AddPluginInteractions(port int, interactions []interface{}) error {
+	log.Println("[DEBUG] plugin interface adding interactions", interactions)
+	payload := struct {
+		Interactions []interface{} `json:"interactions"`
+	}{
+		Interactions: interactions,
+	}
+
+	b, err := json.Marshal(payload)
+	if err != nil {
+		log.Println("[ERROR] unable to serialise interactions to JSON:", err)
+		return err
+	}
+	log.Println("[DEBUG] adding interactions", string(b))
+	cInteractions := C.CString(string(b))
+	defer free(cInteractions)
+	C.add_plugin_interaction(C.int(port), cInteractions)
+
+	// TODO: handle error (parse int above)
+	return nil
+}
+
+// CleanupPluginMockServer frees the memory from the previous mock server.
+func CleanupPluginMockServer(port int) bool {
+	log.Println("[DEBUG] plugin mock server cleaning up port:", port)
+	res := C.cleanup_plugin_mock_server(C.int(port))
+
+	return int(res) == 1
+}
+
 // Verify verifies that all interactions were successful. If not, returns a slice
 // of Mismatch-es. Does not write the pact or cleanup server.
-func Verify(port int, dir string) (bool, []MismatchedRequest) {
+func Verify(port int) (bool, []MismatchedRequest) {
 	res := C.mock_server_matched(C.int(port))
 
 	mismatches := MockServerMismatchedRequests(port)
 	log.Println("[DEBUG] mock server mismatches:", len(mismatches))
 
 	return int(res) == 1, mismatches
+}
+
+// VerifyPlugin verifies that all interactions were successful. If not, returns a slice
+// of Mismatch-es. Does not write the pact or cleanup server.
+func VerifyPlugin(port int) (bool, PluginInteractionMismatch) {
+	log.Println("[DEBUG] VerifyPlugin():", port)
+	res := C.plugin_mock_server_matched(C.int(port))
+
+	mismatched, err := PluginMockServerMismatchedRequests(port)
+	if err != nil {
+		log.Println("[ERROR] error parsing response from FFI", err)
+		return false, PluginInteractionMismatch{}
+	}
+
+	log.Println("[DEBUG] plugin mock server mismatches:", len(mismatched.Mismatches))
+
+	return int(res) == 1, mismatched
+}
+
+// PluginMockServerMismatchedRequests returns a JSON object containing any mismatches from
+// the last set of interactions for a plugin server
+func PluginMockServerMismatchedRequests(port int) (PluginInteractionMismatch, error) {
+	log.Println("[DEBUG] mock server determining mismatches:", port)
+	var res PluginInteractionMismatch
+
+	mismatches := C.plugin_mock_server_mismatches(C.int(port))
+	err := json.Unmarshal([]byte(C.GoString(mismatches)), &res)
+
+	if err != nil {
+		return PluginInteractionMismatch{}, err
+	}
+
+	return res, nil
 }
 
 // MockServerMismatchedRequests returns a JSON object containing any mismatches from

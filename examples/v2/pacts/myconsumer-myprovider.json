@@ -1,48 +1,30 @@
 {
   "consumer": {
-    "name": "MyConsumer"
+    "name": "TCPConsumer"
   },
   "provider": {
-    "name": "MyProvider"
+    "name": "TCPProvider"
   },
   "interactions": [
     {
-      "description": "A request to get foo",
-      "providerState": "User foo exists",
+      "type": "tcp",
+      "description": "a hello request",
       "request": {
-        "method": "GET",
-        "path": "/foobar",
-        "headers": {
-          "Authorization": "Bearer 1234",
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "name": "billy"
-        }
+        "message": "hello"
       },
       "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "lastName": "sampson",
-          "name": "billy"
-        },
-        "matchingRules": {
-          "$.body.lastName": {
-            "match": "type"
-          },
-          "$.body.name": {
-            "match": "type"
-          }
-        }
+        "message": "world!"
       }
     }
   ],
   "metadata": {
     "pactSpecification": {
-      "version": "2.0.0"
+      "version": "4.0.0"
+    },
+    "plugin": {
+      "name": "tcp",
+      "version": "1.0.0",
+      "delimeter": "\r\n"
     }
   }
 }
