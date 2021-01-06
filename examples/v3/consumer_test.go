@@ -233,7 +233,7 @@ func TestPluginPact(t *testing.T) {
 	// Plugin providers could create language specific interfaces that except well defined types
 	// The raw plugin interface accepts an interface{}
 	provider.AddInteraction(tcpInteraction{
-		Message:   "hello111",
+		Message:   "hello",
 		Response:  "world!",
 		Delimeter: "\r\n",
 	})
@@ -313,6 +313,7 @@ var tcpHelloWorldTest = func(config v3.MockServerConfig) error {
 	status = strings.TrimSpace(status)
 	fmt.Println("response from server:", status)
 
+	// Add this back if you want to see the test itself failing
 	// if status != "world!" {
 	// 	return fmt.Errorf("expected 'world!', got '%s'.", status)
 	// }

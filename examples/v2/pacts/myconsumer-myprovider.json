@@ -22,9 +22,9 @@
       "version": "4.0.0"
     },
     "plugin": {
-      "name": "tcp",
+      "name": "pact-foundation/tcp",
       "version": "1.0.0",
-      "delimeter": "\r\n"
+      "delimiter": "\r\n"
     }
   }
 }
