@@ -1,7 +1,12 @@
 package verifier
 
 /*
-#cgo LDFLAGS: -v /opt/pact/libpact_verifier_ffi.dylib
+
+#cgo CFLAGS: -I${SRCDIR}/../../include -g -Wall
+#cgo LDFLAGS: -L${SRCDIR}/../../libs -v
+#cgo darwin,amd64 LDFLAGS: -lpact_verifier_ffi -Wl,-framework,Security
+
+// #cgo darwin,amd64 LDFLAGS: ${SRCDIR}/../../libs/libpact_verifier_ffi.a
 
 // Library headers
 typedef int bool;

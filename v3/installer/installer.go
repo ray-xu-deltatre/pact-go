@@ -274,6 +274,7 @@ var packages = map[string]packageInfo{
 		// testCommand: func() string {
 		// 	return mockserver.Version()
 		// },
+		// TODO: could do OS specific checks on the libraries to lookup the version in the metadata??
 	},
 }
 
