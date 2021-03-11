@@ -2,8 +2,8 @@ package verifier
 
 /*
 
-#cgo CFLAGS: -I${SRCDIR}/../../include -g -Wall
-#cgo LDFLAGS: -L${SRCDIR}/../../libs -v
+#cgo CFLAGS: -I${SRCDIR}/../../.libs/include -g -Wall
+#cgo LDFLAGS: -L${SRCDIR}/../../.libs -v
 #cgo darwin,amd64 LDFLAGS: -lpact_verifier_ffi -Wl,-framework,Security
 
 // #cgo darwin,amd64 LDFLAGS: ${SRCDIR}/../../libs/libpact_verifier_ffi.a

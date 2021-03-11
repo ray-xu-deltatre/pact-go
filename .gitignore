@@ -1,6 +1,5 @@
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
-*.a
 
 # TODO: bring this back out and remove files from history before merging into master
 # *.so
