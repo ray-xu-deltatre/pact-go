@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pact-foundation/pact-go/examples/types"
+	"github.com/ray-xu-deltatre/pact-go/examples/types"
 )
 
 // Login object to be submitted via API POST.

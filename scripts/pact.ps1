@@ -53,7 +53,7 @@ pact-broker version
 
 # Run tests
 Write-Host "--> Running tests"
-$packages = go list github.com/pact-foundation/pact-go/... |  where {$_ -inotmatch 'vendor'} | where {$_ -inotmatch 'examples'}
+$packages = go list github.com/ray-xu-deltatre/pact-go/... |  where {$_ -inotmatch 'vendor'} | where {$_ -inotmatch 'examples'}
 $curDir=$pwd
 
 foreach ($package in $packages) {
@@ -70,14 +70,14 @@ foreach ($package in $packages) {
 Write-Host "--> Testing E2E examples"
 Write-Host "Running consumer tests"
 docker-compose up -d
-go test -tags=consumer -count=1 github.com/pact-foundation/pact-go/examples/... -run TestExample
+go test -tags=consumer -count=1 github.com/ray-xu-deltatre/pact-go/examples/... -run TestExample
 if ($LastExitCode -ne 0) {
   Write-Host "ERROR: Test failed, logging failure"
   $exitCode=1
 }
 
 Write-Host "Running provider tests"
-go test -tags=provider -count=1 github.com/pact-foundation/pact-go/examples/... -run TestExample
+go test -tags=provider -count=1 github.com/ray-xu-deltatre/pact-go/examples/... -run TestExample
 if ($LastExitCode -ne 0) {
   Write-Host "ERROR: Test failed, logging failure"
   $exitCode=1

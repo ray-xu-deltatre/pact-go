@@ -7,7 +7,7 @@ Furthermore, the web has things like WebSockets which involve bidirectional mess
 Pact now has experimental support for these use cases, by abstracting away the protocol and focussing on the messages passing between them.
 
 For further reading and introduction into this topic, see this [article](https://dius.com.au/2017/09/22/contract-testing-serverless-and-asynchronous-applications/)
-and our [example](https://github.com/pact-foundation/pact-go/tree/master/examples/messages) for a more detailed overview of these concepts.
+and our [example](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/messages) for a more detailed overview of these concepts.
 
 ### Consumer
 

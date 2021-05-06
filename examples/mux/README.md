@@ -8,7 +8,7 @@ User Service ([Provider](#provider)) using JSON over HTTP.
 The API currently exposes a single `Login` endpoint at `POST //login/:id`, which
 the Consumer uses to authenticate a User.
 
-We test 3 scenarios, highlighting the use of [Provider States](/pact-foundation/pact-go#provider#provider-states):
+We test 3 scenarios, highlighting the use of [Provider States](/ray-xu-deltatre/pact-go#provider#provider-states):
 
 1.  When the user "jmarie" exists, and we perform a login, we expect an HTTP `200`
 1.  When the user "jmarie" does not exists, and we perform a login, we expect an HTTP `404`

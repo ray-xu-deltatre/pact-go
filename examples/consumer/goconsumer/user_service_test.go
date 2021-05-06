@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pact-foundation/pact-go/dsl"
-	ex "github.com/pact-foundation/pact-go/examples/types"
-	"github.com/pact-foundation/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/dsl"
+	ex "github.com/ray-xu-deltatre/pact-go/examples/types"
+	"github.com/ray-xu-deltatre/pact-go/types"
 )
 
 // Common test data

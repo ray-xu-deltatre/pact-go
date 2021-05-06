@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pact-foundation/pact-go/types"
-	"github.com/pact-foundation/pact-go/utils"
+	"github.com/ray-xu-deltatre/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/utils"
 )
 
 func TestClient_List(t *testing.T) {

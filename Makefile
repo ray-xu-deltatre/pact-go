@@ -40,8 +40,8 @@ install:
 
 pact: install docker
 	@echo "--- 🔨 Running Pact examples"
-	go test -tags=consumer -count=1 github.com/pact-foundation/pact-go/examples/... -run TestExample
-	go test -tags=provider -count=1 github.com/pact-foundation/pact-go/examples/... -run TestExample
+	go test -tags=consumer -count=1 github.com/ray-xu-deltatre/pact-go/examples/... -run TestExample
+	go test -tags=provider -count=1 github.com/ray-xu-deltatre/pact-go/examples/... -run TestExample
 
 release:
 	echo "--- 🚀 Releasing it"

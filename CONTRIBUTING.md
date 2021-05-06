@@ -9,7 +9,7 @@ Please provide the following information with your issue to enable us to respond
 
 1. The relevant versions of the packages you are using.
 1. The steps to recreate your issue.
-1. An executable code example where possible. You can fork this repository and modify the e2e [examples](https://github.com/pact-foundation/pact-go/blob/master/examples) to quickly recreate your issue.
+1. An executable code example where possible. You can fork this repository and modify the e2e [examples](https://github.com/ray-xu-deltatre/pact-go/blob/master/examples) to quickly recreate your issue.
 
 You can run the E2E tests by:
 
@@ -50,7 +50,7 @@ projects to implement up to v2.0 of the Pact Specification. This is only
 temporary, until [Pact Reference](https://github.com/pact-foundation/pact-reference/)
 work is completed.
 
-* Git clone https://github.com/pact-foundation/pact-go.git
+* Git clone https://github.com/ray-xu-deltatre/pact-go.git
 * Run `make dev` to build the package and setup the Ruby 'binaries' locally
 
 #### Vendoring

@@ -8,7 +8,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/pact-foundation/pact-go/proxy"
+	"github.com/ray-xu-deltatre/pact-go/proxy"
 )
 
 // Hook functions are used to tap into the lifecycle of a Consumer or Provider test

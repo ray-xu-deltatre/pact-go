@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pact-foundation/pact-go/dsl"
+	"github.com/ray-xu-deltatre/pact-go/dsl"
 )
 
 // Example Pact: How to run me!

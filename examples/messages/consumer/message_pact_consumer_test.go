@@ -8,8 +8,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/pact-foundation/pact-go/dsl"
-	"github.com/pact-foundation/pact-go/examples/messages/types"
+	"github.com/ray-xu-deltatre/pact-go/dsl"
+	"github.com/ray-xu-deltatre/pact-go/examples/messages/types"
 )
 
 var like = dsl.Like

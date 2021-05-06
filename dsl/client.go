@@ -15,8 +15,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pact-foundation/pact-go/client"
-	"github.com/pact-foundation/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/client"
+	"github.com/ray-xu-deltatre/pact-go/types"
 )
 
 // Client is the interface
@@ -193,7 +193,7 @@ func (p *PactClient) VerifyProvider(request types.VerifyRequest) ([]types.Provid
 
 	// Split by lines, as the content is JSONL formatted
 	// Each pact is verified by line, and the results (as JSON) sent to stdout.
-	// See https://github.com/pact-foundation/pact-go/issues/88#issuecomment-404686337
+	// See https://github.com/ray-xu-deltatre/pact-go/issues/88#issuecomment-404686337
 	stdOutScanner := bufio.NewScanner(stdOutPipe)
 	go func() {
 		wg.Add(1)

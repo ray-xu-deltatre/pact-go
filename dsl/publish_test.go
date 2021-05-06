@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pact-foundation/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/types"
 )
 
 func createMockRemoteServer(valid bool) (*httptest.Server, string) {

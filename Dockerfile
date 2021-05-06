@@ -7,6 +7,6 @@ RUN curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/do
 
 ENV PATH /usr/local/pact/bin:$PATH
 
-COPY . /go/src/github.com/pact-foundation/pact-go
+COPY . /go/src/github.com/ray-xu-deltatre/pact-go
 
-WORKDIR /go/src/github.com/pact-foundation/pact-go
+WORKDIR /go/src/github.com/ray-xu-deltatre/pact-go

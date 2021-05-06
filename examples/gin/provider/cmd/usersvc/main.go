@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pact-foundation/pact-go/examples/gin/provider"
+	"github.com/ray-xu-deltatre/pact-go/examples/gin/provider"
 )
 
 func main() {

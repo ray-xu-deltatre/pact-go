@@ -9,7 +9,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/pact-foundation/pact-go/utils"
+	"github.com/ray-xu-deltatre/pact-go/utils"
 )
 
 // Simple mock server for testing. This is getting confusing...

@@ -18,7 +18,7 @@ TBC
 
 Provide a repository, gist or reproducable code snippet so that we can test the problem.
 
-Consider forking the project and modifying the [E2E test](https://github.com/pact-foundation/pact-go/blob/master/dsl/pact_integration_test.go)
+Consider forking the project and modifying the [E2E test](https://github.com/ray-xu-deltatre/pact-go/blob/master/dsl/pact_integration_test.go)
 
 ## Relevent log files
 

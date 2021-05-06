@@ -7,13 +7,13 @@ Golang version of [Pact](http://pact.io). Pact is a contract testing framework f
 Enables consumer driven contract testing, providing a mock service and
 DSL for the consumer project, and interaction playback and verification for the service Provider project.
 
-[![Build Status](https://travis-ci.org/pact-foundation/pact-go.svg?branch=master)](https://travis-ci.org/pact-foundation/pact-go)
+[![Build Status](https://travis-ci.org/ray-xu-deltatre/pact-go.svg?branch=master)](https://travis-ci.org/ray-xu-deltatre/pact-go)
 [![Build status](https://ci.appveyor.com/api/projects/status/lg02mfcmvr3e8w5n?svg=true)](https://ci.appveyor.com/project/mefellows/pact-go)
-[![Coverage Status](https://coveralls.io/repos/github/pact-foundation/pact-go/badge.svg?branch=HEAD)](https://coveralls.io/github/pact-foundation/pact-go?branch=HEAD)
-[![Go Report Card](https://goreportcard.com/badge/github.com/pact-foundation/pact-go)](https://goreportcard.com/report/github.com/pact-foundation/pact-go)
-[![GoDoc](https://godoc.org/github.com/pact-foundation/pact-go?status.svg)](https://godoc.org/github.com/pact-foundation/pact-go)
+[![Coverage Status](https://coveralls.io/repos/github/ray-xu-deltatre/pact-go/badge.svg?branch=HEAD)](https://coveralls.io/github/ray-xu-deltatre/pact-go?branch=HEAD)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ray-xu-deltatre/pact-go)](https://goreportcard.com/report/github.com/ray-xu-deltatre/pact-go)
+[![GoDoc](https://godoc.org/github.com/ray-xu-deltatre/pact-go?status.svg)](https://godoc.org/github.com/ray-xu-deltatre/pact-go)
 [![slack](https://slack.pact.io/badge.svg)](https://slack.pact.io)
-[![Known Vulnerabilities](https://snyk.io/test/github/pact-foundation/pact-go/badge.svg?targetFile=Gopkg.lock)](https://snyk.io/test/github/pact-foundation/pact-go?targetFile=Gopkg.lock)
+[![Known Vulnerabilities](https://snyk.io/test/github/ray-xu-deltatre/pact-go/badge.svg?targetFile=Gopkg.lock)](https://snyk.io/test/github/ray-xu-deltatre/pact-go?targetFile=Gopkg.lock)
 
 ## Introduction
 
@@ -31,7 +31,7 @@ Read [Getting started with Pact] for more information for beginners.
 
 <p align="center">
   <a href="https://asciinema.org/a/180671">
-    <img width="880" src="https://raw.githubusercontent.com/pact-foundation/pact-go/master/.github/pact-small.svg?sanitize=true"></img>
+    <img width="880" src="https://raw.githubusercontent.com/ray-xu-deltatre/pact-go/master/.github/pact-small.svg?sanitize=true"></img>
   </a>
 </p>
 
@@ -110,13 +110,13 @@ _\*_ v3 support is limited to the subset of functionality required to enable lan
 
 1.  Download the latest [CLI tools] of the standalone tools and ensure the binaries are on your `PATH`:
 1.  Unzip the package into a known location, and ensuring the `pact` and other binaries in the `bin` directory are on the `PATH`.
-1.  Run `go get github.com/pact-foundation/pact-go@v1` to install the source packages
+1.  Run `go get github.com/ray-xu-deltatre/pact-go@v1` to install the source packages
 
 See below for how to automate this:
 
 ### Go get
 
-Since `1.x.x` Pact is go-gettable, and uses tags for versioning, so `dep ensure --add github.com/pact-foundation/pact-go@1.0.0` or `go get gopkg.in/pact-foundation/pact-go.v1` is now possible.
+Since `1.x.x` Pact is go-gettable, and uses tags for versioning, so `dep ensure --add github.com/ray-xu-deltatre/pact-go@1.0.0` or `go get gopkg.in/ray-xu-deltatre/pact-go.v1` is now possible.
 
 See the [Changelog] for versions to pin to and their history.
 
@@ -128,7 +128,7 @@ The following will install pact binaries into `/opt/pact/bin`:
 cd /opt
 curl -fsSL https://raw.githubusercontent.com/pact-foundation/pact-ruby-standalone/master/install.sh | bash
 export PATH=$PATH:/opt/pact/bin
-go get github.com/pact-foundation/pact-go@v1
+go get github.com/ray-xu-deltatre/pact-go@v1
 ```
 
 Test the installation:
@@ -149,8 +149,8 @@ Pact Go runs as part of your regular Go tests.
 
 We'll run through a simple example to get an understanding the concepts:
 
-1.  `go get github.com/pact-foundation/pact-go`
-1.  `cd $GOPATH/src/github.com/pact-foundation/pact-go/examples/`
+1.  `go get github.com/ray-xu-deltatre/pact-go`
+1.  `cd $GOPATH/src/github.com/ray-xu-deltatre/pact-go/examples/`
 1.  `go test -v -run TestConsumer`.
 
 The simple example looks like this:
@@ -220,8 +220,8 @@ func TestConsumer(t *testing.T) {
 
 ### Provider API Testing
 
-1.  `go get github.com/pact-foundation/pact-go`
-1.  `cd $GOPATH/src/github.com/pact-foundation/pact-go/examples/`
+1.  `go get github.com/ray-xu-deltatre/pact-go`
+1.  `cd $GOPATH/src/github.com/ray-xu-deltatre/pact-go/examples/`
 1.  `go test -v -run TestProvider`.
 
 Here is the Provider test process broker down:
@@ -536,7 +536,7 @@ Furthermore, the web has things like WebSockets which involve bidirectional mess
 Pact now has experimental support for these use cases, by abstracting away the protocol and focussing on the messages passing between them.
 
 For further reading and introduction into this topic, see this [article](https://dius.com.au/2017/09/22/contract-testing-serverless-and-asynchronous-applications/)
-and our [example](https://github.com/pact-foundation/pact-go/tree/master/examples/messages) for a more detailed overview of these concepts.
+and our [example](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/messages) for a more detailed overview of these concepts.
 
 ### Consumer
 
@@ -763,9 +763,9 @@ then specifying a response body is as simple as:
 
 The `pact` struct tags shown above are optional. By default, dsl.Match just asserts that the JSON shape matches the struct and that the field types match.
 
-See [dsl.Match](https://github.com/pact-foundation/pact-go/blob/master/dsl/matcher.go) for more information.
+See [dsl.Match](https://github.com/ray-xu-deltatre/pact-go/blob/master/dsl/matcher.go) for more information.
 
-See the [matcher tests](https://github.com/pact-foundation/pact-go/blob/master/dsl/matcher_test.go)
+See the [matcher tests](https://github.com/ray-xu-deltatre/pact-go/blob/master/dsl/matcher_test.go)
 for more matching examples.
 
 ## Tutorial (60 minutes)
@@ -776,13 +776,13 @@ Learn everything in Pact Go in 60 minutes: https://github.com/pact-foundation/pa
 
 ### HTTP APIs
 
-- [API Consumer](https://github.com/pact-foundation/pact-go/tree/master/examples/)
-- [Golang ServeMux](https://github.com/pact-foundation/pact-go/tree/master/examples/mux)
-- [Gin](https://github.com/pact-foundation/pact-go/tree/master/examples/gin)
+- [API Consumer](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/)
+- [Golang ServeMux](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/mux)
+- [Gin](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/gin)
 
 ### Asynchronous APIs
 
-- [Message Queue](https://github.com/pact-foundation/pact-go/tree/master/examples/messages)
+- [Message Queue](https://github.com/ray-xu-deltatre/pact-go/tree/master/examples/messages)
 
 ### Integrated examples
 
@@ -897,7 +897,7 @@ Supply your own TLS configuration to customise the behaviour of the runtime:
 	})
 ```
 
-See [self-signed certificate](https://github.com/pact-foundation/pact-go/examles/customTls/self_signed_certificate_test.go) for an example.
+See [self-signed certificate](https://github.com/ray-xu-deltatre/pact-go/examles/customTls/self_signed_certificate_test.go) for an example.
 
 ### Testing AWS API Gateway APIs
 
@@ -919,16 +919,16 @@ Additional documentation can be found at the main [Pact website](https://pact.io
 ## Roadmap
 
 The [roadmap](https://docs.pact.io/roadmap/) for Pact and Pact Go is outlined on our main website.
-Detail on the native Go implementation can be found [here](https://github.com/pact-foundation/pact-go/wiki/Native-implementation-roadmap).
+Detail on the native Go implementation can be found [here](https://github.com/ray-xu-deltatre/pact-go/wiki/Native-implementation-roadmap).
 
 ## Contributing
 
-See [CONTRIBUTING](https://github.com/pact-foundation/pact-go/edit/master/CONTRIBUTING.md).
+See [CONTRIBUTING](https://github.com/ray-xu-deltatre/pact-go/edit/master/CONTRIBUTING.md).
 
 [spec]: https://github.com/pact-foundation/pact-specification
-[stable]: https://github.com/pact-foundation/pact-go/tree/release/0.x.x
-[alpha]: https://github.com/pact-foundation/pact-go/tree/release/1.1.x
-[troubleshooting]: https://github.com/pact-foundation/pact-go/wiki/Troubleshooting
+[stable]: https://github.com/ray-xu-deltatre/pact-go/tree/release/0.x.x
+[alpha]: https://github.com/ray-xu-deltatre/pact-go/tree/release/1.1.x
+[troubleshooting]: https://github.com/ray-xu-deltatre/pact-go/wiki/Troubleshooting
 [getting started with pact]: http://dius.com.au/2016/02/03/microservices-pact/
 [pact website]: https://docs.pact.io/
 [slack channel]: https://gophers.slack.com/messages/pact/
@@ -938,7 +938,7 @@ See [CONTRIBUTING](https://github.com/pact-foundation/pact-go/edit/master/CONTRI
 [cli tools]: https://github.com/pact-foundation/pact-ruby-standalone/releases
 [installation]: #installation
 [message support]: https://github.com/pact-foundation/pact-specification/tree/version-3#introduces-messages-for-services-that-communicate-via-event-streams-and-message-queues
-[changelog]: https://github.com/pact-foundation/pact-go/blob/master/CHANGELOG.md
+[changelog]: https://github.com/ray-xu-deltatre/pact-go/blob/master/CHANGELOG.md
 [pact broker]: https://github.com/pact-foundation/pact_broker
 [hosted broker]: https://pact.dius.com.au
 [can-i-deploy tool]: https://docs.pact.io/can_i_deploy

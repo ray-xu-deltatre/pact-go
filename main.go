@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pact-foundation/pact-go/command"
+import "github.com/ray-xu-deltatre/pact-go/command"
 
 func main() {
 	command.Execute()

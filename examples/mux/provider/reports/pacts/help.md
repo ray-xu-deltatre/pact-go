@@ -1,10 +1,10 @@
 # For assistance debugging failures
 
 - The pact files have been stored locally in the following temp directory:
-  /Users/mfellows/go/src/github.com/pact-foundation/pact-go/examples/mux/provider/tmp/pacts
+  /Users/mfellows/go/src/github.com/ray-xu-deltatre/pact-go/examples/mux/provider/tmp/pacts
 
 - The requests and responses are logged in the following log file:
-  /Users/mfellows/go/src/github.com/pact-foundation/pact-go/examples/mux/provider/log/pact.log
+  /Users/mfellows/go/src/github.com/ray-xu-deltatre/pact-go/examples/mux/provider/log/pact.log
 
 - Add BACKTRACE=true to the `rake pact:verify` command to see the full backtrace
 

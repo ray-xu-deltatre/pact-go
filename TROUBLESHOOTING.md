@@ -46,4 +46,4 @@ You likely want `application/json` or similar, to compare JSON payloads e.g.
 		})
 ```
 
-See https://github.com/pact-foundation/pact-go/issues/15 for background.
+See https://github.com/ray-xu-deltatre/pact-go/issues/15 for background.

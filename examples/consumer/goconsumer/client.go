@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	ex "github.com/pact-foundation/pact-go/examples/types"
+	ex "github.com/ray-xu-deltatre/pact-go/examples/types"
 )
 
 // Client is a UI for the User Service.

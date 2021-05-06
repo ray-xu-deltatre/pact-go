@@ -2,7 +2,7 @@ version: "{build}"
 image: Visual Studio 2019
 
 # Source Config
-clone_folder: c:\gopath\src\github.com\pact-foundation\pact-go
+clone_folder: c:\gopath\src\github.com\ray-xu-deltatre\pact-go
 
 init:
   - git config --global core.autocrlf input
@@ -15,8 +15,8 @@ build: false
 deploy: false
 
 test_script:
-  - go build -o /tmp/pact-go github.com/pact-foundation/pact-go
-  - ps: c:\gopath\src\github.com\pact-foundation\pact-go\scripts\pact.ps1
+  - go build -o /tmp/pact-go github.com/ray-xu-deltatre/pact-go
+  - ps: c:\gopath\src\github.com\ray-xu-deltatre\pact-go\scripts\pact.ps1
 
 artifacts:
 - path: '**\*.log'

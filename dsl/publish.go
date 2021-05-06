@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/hashicorp/logutils"
-	"github.com/pact-foundation/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/types"
 )
 
 // PactFile is a simple representation of a Pact file to be able to

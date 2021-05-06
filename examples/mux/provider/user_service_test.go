@@ -13,10 +13,10 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pact-foundation/pact-go/dsl"
-	examples "github.com/pact-foundation/pact-go/examples/types"
-	"github.com/pact-foundation/pact-go/types"
-	"github.com/pact-foundation/pact-go/utils"
+	"github.com/ray-xu-deltatre/pact-go/dsl"
+	examples "github.com/ray-xu-deltatre/pact-go/examples/types"
+	"github.com/ray-xu-deltatre/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/utils"
 )
 
 // The Provider verification

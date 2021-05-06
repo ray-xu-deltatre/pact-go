@@ -6,7 +6,7 @@ how Pact could be used in each.
 Each Provider API currently exposes a single `Login` endpoint at `POST /login/1`,
 which the [Consumer](consumer/goconsumer) uses to authenticate a User.
 
-We test 5 scenarios, highlighting the use of [Provider States](/pact-foundation/pact-go#provider#provider-states), [Hooks](/pact-foundation/pact-go#before-and-after-hooks) and [RequestFilters](/pact-foundation/pact-go#request-filters):
+We test 5 scenarios, highlighting the use of [Provider States](/ray-xu-deltatre/pact-go#provider#provider-states), [Hooks](/ray-xu-deltatre/pact-go#before-and-after-hooks) and [RequestFilters](/ray-xu-deltatre/pact-go#request-filters):
 
 1.  When the user "jmarie" exists, and we perform a login, we expect an HTTP `200`
 1.  When the user "jmarie" does not exists, and we perform a login, we expect an HTTP `404`

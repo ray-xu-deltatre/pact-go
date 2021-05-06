@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pact-foundation/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/types"
 	"github.com/stretchr/testify/assert"
 )
 

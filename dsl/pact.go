@@ -21,10 +21,10 @@ import (
 	"time"
 
 	"github.com/hashicorp/logutils"
-	"github.com/pact-foundation/pact-go/install"
-	"github.com/pact-foundation/pact-go/proxy"
-	"github.com/pact-foundation/pact-go/types"
-	"github.com/pact-foundation/pact-go/utils"
+	"github.com/ray-xu-deltatre/pact-go/install"
+	"github.com/ray-xu-deltatre/pact-go/proxy"
+	"github.com/ray-xu-deltatre/pact-go/types"
+	"github.com/ray-xu-deltatre/pact-go/utils"
 )
 
 // Pact is the container structure to run the Consumer Pact test cases.
@@ -111,7 +111,7 @@ func (p *Pact) AddMessage() *Message {
 	return m
 }
 
-func(p *Pact)WithClient(c Client) {
+func (p *Pact) WithClient(c Client) {
 	p.pactClient = c
 }
 
