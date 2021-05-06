@@ -111,6 +111,10 @@ func (p *Pact) AddMessage() *Message {
 	return m
 }
 
+func(p *Pact)WithClient(c Client) {
+	p.pactClient = c
+}
+
 // AddInteraction creates a new Pact interaction, initialising all
 // required things. Will automatically start a Mock Service if none running.
 func (p *Pact) AddInteraction() *Interaction {
